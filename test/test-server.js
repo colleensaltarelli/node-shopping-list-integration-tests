@@ -43,8 +43,8 @@ describe('Shopping List', function() {
     // we must either return a Promise object or else call a `done` callback
     // at the end of the test. The `chai.request(server).get...` call is asynchronous
     // and returns a Promise, so we just return it.
-    return chai.request(app)
-      .get('/shopping-list')
+    return chai.request(app) 
+    .get('/shopping-list')
       .then(function(res) {
         res.should.have.status(200);
         res.should.be.json;
