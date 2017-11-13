@@ -54,5 +54,50 @@ describe('Recipes', function() {
               item.ingredients.should.be.a('array');
             });
         })
-  })
-})
+  });
+
+  it ('should add a recipe on POST', function(){
+      const newRecipe = {name: 'cake', ingredients: ['2 cups flour', '2 eggs'] };
+      return chai.request(app)
+        .post('/recipes')
+        .send(newRecipe)
+        .then(function(res) {
+            res.should.have.status(201);
+            res.should.be.json;
+            res.body.should.be.a('object');
+            const expectedKeys = ['id', 'name', 'ingredients'];
+            res.body.should.include.keys(expectedKeys);
+            res.body.id.should.not.be.null;
+            res.body.should.deep.equal(Object.assign(newRecipe, {id: res.body.id}));
+        })
+  });
+
+  it ('should update recipe on PUT', function(){
+    const updateRecipe = {name: 'cookie', ingredients: ['2 cups sugar', '2 bananas'] };
+    return chai.request(app)
+        .get('/recipes')
+        .then(function(res){
+            updateRecipe.id = res.body[0].id;
+            return chai.request(app)
+                .put(`/recipes/${updateRecipe.id}`)
+                .send(updateRecipe);
+        })
+        .then(function(res) {
+            res.should.have.status(204);
+        });
+  });
+
+  it('should delete recipe on DELETE', function() {
+    return chai.request(app)
+      // first have to get so we have an `id` of item
+      // to delete
+      .get('/recipes')
+      .then(function(res) {
+        return chai.request(app)
+          .delete(`/recipes/${res.body[0].id}`);
+      })
+      .then(function(res) {
+        res.should.have.status(204);
+      });
+  });
+});
