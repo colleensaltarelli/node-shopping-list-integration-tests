@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: qqBVh2JvcsjdHcJXsQGBiQOFAuWhg/EZ30Q1qYS3SwSoJl0aA/CbgsPFirmcx04jyCK87OzKdUG2d9jgfMLqTKuEcOA8i3p/+K3/tOylCEcGMpP3nZAoehxJcDf2uF6C8mn5/ZtHbs7VlBU4P8M/88Rs360a+S0EFq4YmlTuSI5j7rPRpFe2CcNI/U3v/k5W71cBRDJqDFi7+sIeH+mhVRWAbm3XDHkg4TeMhETwSwzDq5+uJ3Wpl5SkK2ZYHBFgXQjW0bQI4Vga77ttn2i7xC2FM/Uir+o9u+LQILlTDZdk3LueFLKBr4QVIMzbZf7veBHtytJcsth6VqSdF1FBHmQYpDGIvhJCimMSTJJh7aUiHsDENGWiFKrk4uI+utb4STzTmzDn+m/NZb77kTIscOICl1qRZTbX0YPZR17CPakfb/xLoDEgNEjMNE3UaIc2NFMI2W4snaiCp4ax88KEvq2HBQLO7KqIBeAv5vH5J45BBDzwVDqpX5Zj/KhzfMV5G0AfBKc4JUs8TAjHbvgkf9w2EzW+cv0PgG5ha7DfgMWppeFWVSpWoUwDw1YZ48O/YyLRFzSKOnkO2r+I14GaBH4iRHxYE4mRVdO//27pMejkjW+Q2ne8wr34QPzslTt08S9GdiuldG0Tx8or2QsojoyZP8fv8eAC0jcoKBlV0Uk=
+  app: powerful-sea-41164
+  on:
+    repo: colleensaltarelli/node-shopping-list-integration-tests
